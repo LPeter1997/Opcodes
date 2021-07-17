@@ -4908,6 +4908,18 @@
       </Encoding>
     </InstructionForm>
   </Instruction>
+  <Instruction name="ENTER" summary="Make Stack Frame for Procedure Parameters">
+    <InstructionForm gas-name="enter" go-name="ENTER">
+      <Operand type="imm16"/>
+      <Operand type="imm8"/>
+      <ImplicitOperand id="ebp" input="true" output="true"/>
+      <Encoding>
+        <Opcode byte="C8"/>
+        <Immediate size="2" value="#0"/>
+        <Immediate size="1" value="#1"/>
+      </Encoding>
+    </InstructionForm>
+  </Instruction>
   <Instruction name="EXTRACTPS" summary="Extract Packed Single Precision Floating-Point Value">
     <InstructionForm gas-name="extractps" xmm-mode="SSE">
       <ISA id="SSE4.1"/>
@@ -6831,6 +6843,14 @@
       <Encoding>
         <Opcode byte="8D"/>
         <ModRM mode="#1" reg="#0" rm="#1"/>
+      </Encoding>
+    </InstructionForm>
+  </Instruction>
+  <Instruction name="LEAVE" summary="High Level Procedure Exit">
+    <InstructionForm gas-name="leave" go-name="LEAVE">
+      <ImplicitOperand id="ebp" input="true" output="true"/>
+      <Encoding>
+        <Opcode byte="C9"/>
       </Encoding>
     </InstructionForm>
   </Instruction>
